@@ -1,0 +1,44 @@
+//
+   Created by Fabien on 15/04/2015.
+//
+   Created by Fabien on 14/04/2015.
+doctype html
+html
+    head(lang='fr')
+        meta(charset='UTF-8')
+        title
+    body
+        h1 Mofification Unicorn
+        | Modifier la licorne #{updateUnicorn.name} :
+
+        form(method='post', action='/updateLicorne')
+            p
+                input#name(type='hidden', name='name', value=updateUnicorn.name, size='30', maxlength='10', require='required')
+
+            p
+                label(for='dob') Date de naissance :
+                input#date(type='date', name='dob', value=dateFormat(updateUnicorn.dod,'yyyy-mm-dd'),require='required')
+
+            p
+                label(for='weight') Poid :
+                input#weight(type='number', name='weight', value=updateUnicorn.weight, min='0', size='30', maxlength='10',require='required')
+
+            p
+                label(for='gender') Genre :
+                input#genre(type='text', name='gender', value=updateUnicorn.gender, placeholder='f ou m', size='10', maxlength='1',require='required')
+
+            p
+                label(for='loves')
+                    | Liste des favoris
+                br
+                textarea#aliments(name='loves', rows='3', cols='30')
+                    =updateUnicorn.loves
+            p
+                label(for='vampires') nombre de vampire tu&eacute;s :
+                input#vampire(type='number', name='vampires',value=updateUnicorn.vampires, min='0', size='30', maxlength='10')
+
+            input(type='submit', name='send', value='modifier la licorne')
+            br
+
+    form(action='/')
+        input(type='submit', value='Retour')

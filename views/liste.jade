@@ -1,0 +1,35 @@
+//
+   Created by Fabien on 13/04/2015.
+doctype html
+html
+    head(lang='fr')
+        meta(charset='UTF-8')
+        title Lee Korn
+    body
+        table
+            tr
+                td nom
+                td date de naissance
+                td poid
+                td genre
+                td aime
+                td nb vampires tués
+
+            each unicorn in unicorns
+                tr
+                    td= unicorn.name
+                    td= dateFormat(unicorn.dod,'yyyy-mm-dd')
+                    td= unicorn.weight
+                    td= unicorn.gender
+                    td= unicorn.loves
+                    td= unicorn.vampires
+                    td
+                        a(href='/delete/'+unicorn.name) Supprimer
+                    td
+                        a(href='/update/'+unicorn.name) Modifier
+
+        form(methode='get', action='/')
+            input(type='submit', name='retour', value='retour')
+
+        form(methode='get', action='/create')
+            input(type='submit', name='creer', value='Créer licorne')
